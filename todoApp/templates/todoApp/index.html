@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head %}
+    <title>TodoList</title>
+    <link rel="stylesheet" href="{{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+    {% if request.session.is_login %}
+        <div class="container">
+            <div id="todoBox" class="col-md-6 col-md-offset-3"></div>
+        </div>
+        <script src="{% static 'js/react.js' %}"></script>
+        <script src="{% static 'js/react-dom.js' %}"></script>
+        <script src="{% static 'js/browser.min.js' %}"></script>
+        <script type="text/babel" src="{% static 'js/index.jsx' %}"></script>
+    {% else %}
+        <center><h1>你尚未登录，只能访问公开内容！</h1></center>
+    {% endif %}
+{% endblock %}
