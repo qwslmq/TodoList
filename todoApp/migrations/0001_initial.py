@@ -11,6 +11,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
+            name='TodoItem',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('task', models.CharField(max_length=200)),
+                ('time', models.DateTimeField(auto_now_add=True)),
+                ('complete', models.BooleanField(default=False)),
+            ],
+        ),
+        migrations.CreateModel(
             name='User',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
@@ -25,5 +34,10 @@ class Migration(migrations.Migration):
                 'verbose_name': '\u7528\u6237',
                 'verbose_name_plural': '\u7528\u6237',
             },
+        ),
+        migrations.AddField(
+            model_name='todoitem',
+            name='name',
+            field=models.ForeignKey(to='todoApp.User'),
         ),
     ]
